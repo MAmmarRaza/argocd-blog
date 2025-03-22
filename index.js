@@ -8,12 +8,14 @@ const postRouter = require('./routes/postRouter');
 const frontRouter = require('./routes/frontRouter');
 const cors = require('cors');
 const axios = require('axios'); // Import axios for HTTP requests
+const serverless = require('serverless-http');
+
 const { sessionExistsMiddleware, restrictAccessMiddleware, configureMiddlewares } = require('./middleware/sessionFilter');
 
 const app = express();
 
 app.use(cors({
-  origin: ["https://node-js-project-cms.vercel.app", "https://blog-ammar-17ea7ba0a07b.herokuapp.com", "https://blog.exportthreads.live"],
+  origin: true,
   method: ["POST", "GET", "PUT", "DELETE"],
   credentials: true
 }));
@@ -78,6 +80,7 @@ app.use("/", frontRouter);
 
 // Start server
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+module.exports.handler = serverless(app);

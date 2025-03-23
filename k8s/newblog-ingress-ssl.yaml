@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: raza.exportthreads.live
+  - host: app.raza.exportthreads.live
     http:
       paths:
       - path: /

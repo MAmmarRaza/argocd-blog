@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: newblog
-        image: mammarraza/newblog:latest
+        image: mammarraza/nodejs-project-cms:latest
         ports:
         - containerPort: 5001
         env:
